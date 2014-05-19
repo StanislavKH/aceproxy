@@ -149,6 +149,12 @@ class HTTPHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         # Connected client IP address
         self.clientip = self.request.getpeername()[0]
 
+        if AceConfig.byipaccess == True and len(AceConfig.ipslist) > 0:
+            if self.clientip not in AceConfig.ipslist:
+                logger.info("IP: " + self.clientip + " not allowed for service usage")
+                self.dieWithError(403)  # 403 Forbidden
+                return
+
         logger.info("Accepted connection from " + self.clientip + " path " + self.path)
 
         try:

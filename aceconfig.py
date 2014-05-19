@@ -23,7 +23,7 @@ class AceConfig(object):
     aceport = 62062
     # Ace Stream age parameter (LT_13, 13_17, 18_24, 25_34, 35_44, 45_54,
     # 55_64, GT_65)
-    aceage = AceConst.AGE_18_24
+    aceage = AceConst.AGE_25_34
     # Ace Stream sex parameter (MALE or FEMALE)
     acesex = AceConst.SEX_MALE
     # Ace Stream Engine connection timeout
@@ -39,6 +39,10 @@ class AceConfig(object):
     #
     # HTTP Server host
     httphost = '0.0.0.0'
+    # give access by ip 
+    byipaccess = True
+    # ips list for allowed access 
+    ipslist = ['192.168.1.100']
     # HTTP Server port
     httpport = 8000
     # Maximum concurrent connections (video clients)
@@ -54,7 +58,7 @@ class AceConfig(object):
     # To use this, you should install VLC first
     # And run it with:
     # vlc -I telnet --clock-jitter 0 --network-caching 500 --telnet-pass admin
-    vlcuse = False
+    vlcuse = True
     # VLC host
     vlchost = '127.0.0.1'
     # VLC telnet interface port
@@ -80,19 +84,19 @@ class AceConfig(object):
     # !!!
     # PLEASE set this to 0 if you use VLC
     # !!!
-    videodelay = 2
+    videodelay = 0
     # Obey PAUSE and RESUME commands from Engine
     # (stops sending data to client, should prevent annoying buffering)
     # !!!
     # PLEASE set this to False if you use VLC
     # !!!
-    videoobey = True
+    videoobey = False
     # Stream send delay after PAUSE/RESUME commands (works only if option
     # above is enabled)
     # !!!
     # PLEASE set this to 0 if you use VLC
     # !!!
-    videopausedelay = 3
+    videopausedelay = 0
     # Delay before closing Ace Stream connection when client disconnects
     # In seconds.
     videodestroydelay = 3
